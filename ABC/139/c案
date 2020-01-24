@@ -1,0 +1,40 @@
+#動的計画法ではない
+
+
+現在の値と隣の値を比較
+
+現在＞隣ならば隣へ移動（再帰処理
+
+カウントアップ
+
+n回目：
+
+
+4
+1 2 3 4
+
+number = int(input())
+lower = list(map(int, input().split()))
+
+time = 0
+max = 0
+
+def down(i):
+    global time
+    for j in range(i, number-1):
+        #print("")
+        #print(str(lower[j]) + " : " + str(lower[j+1]))
+        if lower[j] >= lower[j+1]:
+            time += 1
+        else:
+            return
+
+
+for i in range(len(lower)):
+    down(i)
+    #print("time = " + str(time))
+    if max < time:
+        max = time
+    time = 0
+
+print(max)

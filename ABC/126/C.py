@@ -1,10 +1,14 @@
-A, B, X = map(int, input().split())
+N, K = map(int, input().split())
 
-#N円買うには A*N + B * (Nの桁数)円
-#N = 10 A* 10 + 7 * 2
+pow2 = [2**i for i in range(50)]
+#print(pow2[-1])
+ans = 0
 
-#上限
-if(X = 1000000000):
-    print(1000000000)
-
-#A*N + B*len(N)
+for i in range(1,N+1):
+    for j in range(len(pow2)):
+        if K <= i*pow2[j]:
+            #print(j)
+            ans += 1/pow2[j]
+            break
+ans *= (1/N)
+print(ans)

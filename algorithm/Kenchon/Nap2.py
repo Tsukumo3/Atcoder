@@ -27,8 +27,7 @@ def choice_max(n0, n1):
 def solve(n, w, a):
 
     #初期値
-    dp = [[0 for _ in range(w)]]
-    print(dp)
+    dp = [[0 for _ in range(w+1)]]
 
     #dp遷移
     '''
@@ -37,13 +36,33 @@ def solve(n, w, a):
     dp[i+1] = dp[i] + a[i] | dp[i]
     '''
     for i in range(n):
-        for j in range(w):
-            dp.append(choice_max(dp[i] + a[i], dp[i]))
+        line = []
+        print("  w[i],v[i] : (" + str(a[i][0]) +", " + str(a[i][1]) + ")")
+        for j in range(w+1):
+            #print_line = 'w : ' + str(j) + '　までで,  w[i],v[i] : (' + str(a[i][0])+ ", " + str(a[i][1]) +') は積める？'
 
+            if(j >= a[i][0]):
+                print("nap : " + str(dp[i][j-a[i][0]]))
+                print("weg : " + str(a[i][1]))
+                print("add : " + str(dp[i][j-a[i][0]] + a[i][1]))
+
+                line.append(choice_max(dp[i][j-a[i][0]] + a[i][1], dp[i][j]))
+                #print_line += '  -> 詰める'
+            else:
+                #print_line += '  -> 詰めない'
+                line.append(dp[i][j])
+
+            #print(print_line)
+            print('- - - - - - - - - ')
+
+        dp.append(line)
+        print('-**----***-----***--**----')
+
+    print(*a, sep='\n')
     #DP table
-    print(dp)
+    print(*dp, sep='\n')
     #answer
-    print(dp[n])
+    print(dp[n][w])
 
 if __name__ == '__main__':
     n = 6

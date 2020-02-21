@@ -1,19 +1,60 @@
-n = input()
-print(len(n))
-n_list = [int(i) for i in n]
+"""
+f(n) , f(n+1)の値を求める
+f(3456)を求める時
 
-ans = 0
+f(0) = 0, f(1) = 1 とする
 
-'''
-10^100+1の効果
+f(3) = min
+(
+    f(0) + 3
+    f(1) + 7
+)
+f(4) = min
+(
+    f(0) + 4
+    f(1) + 6
+)
 
-'''
+f(34) = min
+(
+    f(3) + 4
+    f(4) + 6
+)
+f(35) = min
+(
+    f(3) + 5
+    f(4) + 5
+)
 
-for i in range(n):
-    #print(type(c))
-    if i >= 0 and i <= 5:
-        ans += i
-    else:
-        ans += (11 - i)
+f(345) = min
+(
+    f(34) + 5
+    f(35) + 5
+)
+f(346) = min
+(
+    f(34) + 4
+    f(35) + 6
+)
+f(3456) = min
+(
+    f(345) + 6
+    f(346) + 4
+)
+"""
+N = input()
+n = [int(i) for i in N]
 
-print(ans)
+f0 = 0
+f1 = 1
+
+dp = f0, f1
+
+# 桁DP
+for i in n:
+    # 支払い枚数を考える
+    fn_0 = min(dp[0] + i, dp[1] + 10 - i)
+    fn_1 = min(dp[0] + (i+1), dp[1] + 10 - (i+1))
+    dp = fn_0, fn_1
+
+print(dp[0])

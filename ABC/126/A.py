@@ -1,8 +1,4 @@
-
+n, k = map(int, input().split())
 s = input()
-
-w = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
-
-l = w.index(s)
-
-print(7-l)
+ans = s[:k-1] + s[k-1].lower() + s[k:]
+print(ans)

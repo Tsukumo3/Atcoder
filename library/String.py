@@ -1,6 +1,9 @@
 #アルファベット
 al=[chr(ord('a') + i) for i in range(26)]
 print(al)
+import string
+string.ascii_lowercase # 小文字全て
+string.ascii_uppercase # 大文字全て
 
 #素因数分解
 pf={}

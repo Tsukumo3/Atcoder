@@ -5,9 +5,10 @@ using namespace std;
 
 int main(){
     
-    int n;
+    int h1;
+    int h2;
 
-    cin >> n;
+    cin >> h1 >> h2;
 
     int ans;
     ans = h1 - h2;

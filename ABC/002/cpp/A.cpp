@@ -5,15 +5,15 @@ using namespace std;
 
 int main(){
     
-    int h1;
-    int h2;
+    int x;
+    int y;
 
-    cin >> h1 >> h2;
+    cin >> x >> y;
 
     int ans;
-    ans = h1 - h2;
+    ans = max(x, y);
 
-    cout << ans << endl;
+    printf("%d\n", ans);
 
     return 0;
 }

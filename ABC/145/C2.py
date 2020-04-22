@@ -7,7 +7,7 @@ import itertools
 n = int(input())
 point = [list(map(int, input().split())) for i in range(n)]
 
-distances = []
+distances = {}
 
 for i in range(n-1):
     for j in range(i+1, n):
@@ -15,8 +15,18 @@ for i in range(n-1):
         xj, yj = point[j]
 
         d = pow(pow(xi - xj, 2) + pow(yi - yj, 2), 0.5)
-        distances.append(d)
+        distances[(i, j)] = d
+        distances[(j, i)] = d
 
-ans = 2* sum(distances) / n
+next = itertools.permutations(range(n))
 
-print(ans)
+all = 0
+
+for root in next:
+    for i in range(len(root)-1):
+        all += distances[(i, i+1)]
+
+bunbo = 1
+for i in range(1,n+1):
+    bunbo *= i
+print(all/bunbo)

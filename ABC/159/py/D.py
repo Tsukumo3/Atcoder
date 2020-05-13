@@ -1,30 +1,21 @@
 import collections
 
-#メモ
-memo = {}
-def combination(n, a, mod):
+if __name__ == '__main__':
 
-    if (n,a) in memo:
-        return memo[(n,a)]
+    n = int(input())
+    a = list(map(int, input().split()))
 
-    x = 1
-    y = 1
-    for i in range(a):
-        x = x * (n-i)%mod
-        y = y * (a-i)%mod
+    c = collections.Counter(a)
 
-    ans = x * pow(y, mod-2, mod)%mod
+    all = 0
 
-    memo[(n, a)] = ans
-    return ans
+    for item in c.items():
+        all += item[1] * (item[1] - 1) //2
 
-def solve(i):
-
-
-
-n = int(input())
-a = list(map(int, input().split()))
-
-c = collections.Counter(a)
-
-for i in a:
+    for i in range(n):
+        item = c[a[i]]
+        after = item * (item-1) // 2
+        before = (item-1) * (item-2) // 2
+        #print(after, before)
+        ans = all - after + before
+        print(ans)

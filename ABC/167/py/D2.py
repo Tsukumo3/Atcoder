@@ -1,50 +1,30 @@
-def loops(n,a):
-
-    loop = 0
-    now = 0
-    time = 0
-
-    g = [False]*n
-    g[0] = True
-
-    while(True):
-        now = a[now]
-        loop += 1
-        now -= 1
-
-        if not g[now]:
-            g[now] = True
-        else:
-            return now+1 ,loop
-
-def start_loop(goal, a):
-    loop = 0
-    now = 0
-
-    time = 0
-
-    while(loop <= n):
-        now = a[now]
-        loop += 1
-        now -= 1
-
-        if now == goal-1:
-            return loop+1
-
 if __name__ == '__main__':
 
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
 
-    start, loop = loops(n, a)
+    root = [] # 訪れた頂点をメモ
+    already = [-1] * (n+1) # rootのindexのメモ　と　すでに訪れたか
 
-    how = start_loop(start, a)
+    c = 1# 周期
+    l = 0# 例外部分のながさ
+    """
+    周期は　書き換えようとした時の　書き換えたかった数 - すでに書いてある数
+    """
 
-    loop = how
+    v = 1#頂点は1 ここから遷移
+    while(already[v] == -1): # すでに書いてあれば訪れている。かつ周期の起点となる場所
+        already[v] = len(root) #訪れたら何回目かを記述
+        root.append(v)
+        v = a[v-1]
 
-    ans = (k-how)%loop
+    c = len(root) - already[v]
+    l = already[v]
 
-    if k < how:
-        
+    if k < l:#例外部分のながさ
+        ans = root[k]
+    else:# 周期にいるなら
+        k -= l
+        ans = root[k%c+l]
 
     print(ans)

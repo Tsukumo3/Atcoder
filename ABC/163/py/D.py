@@ -1,7 +1,9 @@
 n, k = map(int, input().split())
 mod = pow(10, 9) + 7
-all = 0
-
-for i in range(k, n+1):
+ans = 0
+for i in range(k, n+2):
     #小さい方からi個選ぶ
-    m +=
+    mini = i*(i-1)//2
+    maxa = (2*n-i+1)*i//2
+    ans = (ans + (maxa - mini + 1)% mod)% mod
+print(ans)

@@ -1,27 +1,21 @@
 #include <iostream>
 #include <string>
 
+//データ型に新しい名前（エイリアス、シノニム）をつける
+typedef long long ll;
+
 using namespace std;
 
 int main(){
-    
-    string input;
-
-    cin >> input;
-
-    int last = input.size();
-
-    string ans;
-
-    if(input[last-1] == 'o' || input[last-1] == 'k' || input[last-1] == 'u'){
-        ans = "YES";
+    int s[3];
+    int e[3];
+    for(int i=0; i<3; i++){
+        cin >> s[i] >> e[i];
     }
-    else if(input[last-1] == 'h' && input[last-2] == 'c' ||){
+    int ans = 0;
 
+    for(int i=0; i<3; i++){
+        ans = ans + s[i]*e[i]*0.1;
     }
-    else{
-        ans = "NO";
-    }
-
     cout << ans << endl;
 }

@@ -1,12 +1,11 @@
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 int main(){
-    
-    int a, b, c;
-    cin >> a >> b >> c;
-    int ans;
-
+    int s[3];
+    cin >> s[0] >> s[1] >> s[2];
+    sort(s, s+3);
+    cout << s[1] << endl;
     return 0;
 }

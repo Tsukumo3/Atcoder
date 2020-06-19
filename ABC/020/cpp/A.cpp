@@ -4,16 +4,16 @@
 using namespace std;
 
 int main(){
-    
-    int h1;
-    int h2;
 
-    cin >> h1 >> h2;
+    int input;
+    cin >> input;
 
-    int ans;
-    ans = h1 - h2;
-
-    cout << ans << endl;
+    if(1 == input){
+        cout << "ABC" << endl;
+    }
+    else{
+        cout << "chokudai" << endl;
+    }
 
     return 0;
 }

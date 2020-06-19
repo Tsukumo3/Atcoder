@@ -1,19 +1,46 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 int main(){
     
-    int h1;
-    int h2;
+    int n;
+    int a[4] = {1, 2, 4, 8};
 
-    cin >> h1 >> h2;
+    cin >> n;
 
-    int ans;
-    ans = h1 - h2;
+    int now = 3;
 
-    cout << ans << endl;
+    vector<int> ans;
+
+    while(n != 0)
+    {
+        if(n >= a[now])
+        {
+            n = n - a[now];
+            ans.push_back(a[now]);
+        }
+        else
+        {
+            if(now >= 0)
+            {
+                now = now - 1;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+    }
+
+    cout << ans.size() << endl;
+    
+    for(int i=0; i < ans.size(); i++){
+        cout << ans[i] << endl;
+    }
 
     return 0;
 }

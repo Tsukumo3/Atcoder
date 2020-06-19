@@ -1,19 +1,29 @@
 #include <iostream>
-#include <string>
-
 using namespace std;
 
 int main(){
     
-    int h1;
-    int h2;
+    int n, s, t, w;
+    cin >> n >> s >> t;
+    
+    int a[n];
+    cin >> a[0];
+   
 
-    cin >> h1 >> h2;
+    for(int i=1; i<n; i++){
+        cin >> a[i];
+    }
 
-    int ans;
-    ans = h1 - h2;
+    w = 0;
+    int ans = 0;
+
+    for(int i=0; i<n; i++){
+        w = w + a[i];
+        if(s <= w && w <= t){
+            ++ans;
+        }
+    }
 
     cout << ans << endl;
-
     return 0;
 }

@@ -4,16 +4,23 @@
 using namespace std;
 
 int main(){
-    
-    int h1;
-    int h2;
 
-    cin >> h1 >> h2;
+    int x;
 
-    int ans;
-    ans = h1 - h2;
+    cin >> x;
 
-    cout << ans << endl;
+    string s;
+
+    if (x >= 1200)
+    {
+        s = "ARC";
+    }
+    else
+    {
+        s = "ABC";
+    }
+
+    cout << s << endl;
 
     return 0;
 }
